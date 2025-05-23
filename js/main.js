@@ -150,41 +150,6 @@ function generateEditButton(idx) {
     return div
 }
 
-document.querySelector('#create').addEventListener('submit', event =>{
-    event.preventDefault()
-
-        
-
-    const name = document.querySelector('#name').value;
-    const team = document.querySelector('#team').value
-    const best = document.querySelector('#best').value;
-    const gender = document.querySelector('#gender').value;
-    const type  = document.querySelector('#type').value;
-    const img = document.querySelector('#img').value;
-
-    let typeContainer ; 
-
-    if (document.querySelector(`.${type}.${gender}`).children.length >= (type == 'u15' ? 3:7)) {
-        
-        const close = document.querySelector('close-btn')
-        closeBtn.showModal();
-        return
-    }
-
-    players.push({
-        name,
-        team,
-        gender,
-        type,
-        best,
-        img,
-    });
-
-    generatecard();
-
-    event.target.reset();
-});
-
 function generateLi(text, tomb){
     const li = document.createElement('li')
     li.textContent = text
@@ -217,7 +182,7 @@ document.querySelector('#update').addEventListener('submit', (event) => {
     const best = document.querySelector('#update-best').value;
     const gender = document.querySelector('#update-gender').value;
     const type  = document.querySelector('#update-type').value;
-    const img = document.querySelector('#-update-img').value;
+    const img = document.querySelector('#update-img').value;
 
     players.splice(updatePlayer, 1, {
         name,
