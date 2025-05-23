@@ -57,9 +57,7 @@ function generatecard(){
 
             grid.append(
                 generateParagraph(player.name),
-                generateEditButton(index),
                 generateParagraph("Legjobb eredmény: " +  player.best),
-                generateDelButton(index),
                 generateParagraph(player.team,['col-span-full'])
 
             )
@@ -97,9 +95,8 @@ function generatecard(){
             }
             else{
                 captain.append(card)
-                grid.removeChild(grid.children[2])
+                grid.removeChild(grid.children[1])
                 grid.children[1].classList.add('flex','flex-col','justify-around')
-                grid.children[2].classList.add('flex','flex-col','justify-around')
             }
             
         }
@@ -109,46 +106,6 @@ function generatecard(){
 }
 
 generatecard();
-
-
-function generateDelButton(idx) {
-    const button = document.createElement('button');
-    const div = document.createElement('div')
-    button.textContent = "Törlés"
-    button.classList.add('bg-red-500','p-2', 'rounded', 'cursor-pointer',);
-    button.addEventListener('click', () => {
-        deletePlayer = idx;
-        const items = [];
-        for (const key in players[idx]) {
-            const li = document.createElement('li')
-            li.classList.add('border', 'border-green-800', 'rounded','m-3', 'min-h-[2rem]','overflow-hidden')
-            li.textContent = players[idx][key];
-            items.push(li);
-        }
-        deleteDialog.querySelector('ul').replaceChildren(...items);
-        deleteDialog.showModal();
-    });
-    div.classList.add('p-2','col-2')
-    div.append(button)
-    return div
-}
-
-function generateEditButton(idx) {
-    const button = document.createElement('button');
-    const div = document.createElement('div')
-    button.textContent = "Szerkesztés"
-    button.classList.add('bg-yellow-500', 'p-2', 'rounded', 'cursor-pointer',);
-    button.addEventListener('click', () => {
-        updatePlayer = idx;
-        for (const key in players[idx]) {
-            updateDialog.querySelector(`[name="${key}"]`).value = players [idx] [key];
-        }
-        updateDialog.showModal();
-    });
-    div.classList.add('p-2','col-2')
-    div.append(button)
-    return div
-}
 
 function generateLi(text, tomb){
     const li = document.createElement('li')
@@ -173,48 +130,6 @@ function generateList() {
 
 generateList()
 
-document.querySelector('#update').addEventListener('submit', (event) => {
-
-    event.preventDefault();
-
-    const name = document.querySelector('#update-name').value;
-    const team = document.querySelector('#update-team').value
-    const best = document.querySelector('#update-best').value;
-    const gender = document.querySelector('#update-gender').value;
-    const type  = document.querySelector('#update-type').value;
-    const img = document.querySelector('#update-img').value;
-
-    players.splice(updatePlayer, 1, {
-        name,
-        team,
-        gender,
-        type,
-        best,
-        img,
-    })
-
-    generatecard();
-    updatePlayer = -1;
-    updateDialog.close();
-    event.target.reset();
-});
-
-document.querySelector('#close-update').addEventListener('click', () => {
-    updatePlayer = -1;
-    updateDialog.close();
-});
-
-document.querySelector('#delete').addEventListener('submit', (event) => {
-    event.preventDefault();
-
-    players.splice(deletePlayer, 1)
-
-    generatecard();
-
-    deletePlayer = -1;
-
-    deleteDialog.close();
-})
 
 document.querySelector('#close-delete').addEventListener('click', () => {
     updatePlayer = -1;
