@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FTC teke szakosztály</title>
+    <link rel="icon" href="img/wchlogo.png" type="image/x-icon">
+    <link rel="stylesheet" href="css/valogatott.css">
+    <script src="js/main.js" type="module"></script>
+    <script src="js/nav.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+</head>
+
+<body>
+    
+    <header id="home">
+        
+    </header>
+
+    <nav class="closed">
+        <div>
+            <a id="nav-home" href="#home"><span>BB</span></a>
+            <img src="../img/hamburger.svg" alt="Menü" id="nav-toggle">
+        </div>
+        <ul>
+            <li><a href="#intro">Bevezető</a></li>
+            <li><a href="#wch2025">WCH 2025</a></li>
+            <li><a href="#playersu15-u19">Válogatott keret U15-U19</a></li> 
+            <li><a href="#eredmenyek">Eredmények</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <h1>A teke hazatér!</h1>
+        <article id="intro">
+            <p>Május 22. és június 7. között Székesfehérvár a kilenctűs teke nemzetközi központjává válik, hiszen a város ad otthont a 2025-ös kilenctűs teke világbajnokságnak. Ezen a rangos eseményen nem csak női és férfi válogatott mérkőzések lesznek, hanem U15-ös és U19-es korosztály világbajnoksága is.</p>
+            <p>Pintyőke Marcell, a Magyar és a Nemzetközi Bowling Szövetség elnöke elmondta: „A világbajnokság szlogenje: „Ninepin hazatér”. Szeretnénk egy különleges és emlékezetes eseményt szervezni, hogy megmutassuk, Magyarország továbbra is a kilenctűs teke hazája.”</p>
+            <img src="img/met_arena.png" alt="Met aréna" class="big-img">
+        </article>
+        <article id="wch2025">
+            <h2>WCH 2025</h2>
+
+            <p>Május 22. és június 7. között Székesfehérváron mérik össze tudásukat a világ legjobb kilenctűs tekézői, ugyanis a Királyok Városa ad otthont az idei kilenctűs teke világbajnokságnak.Cser-Palkovics András polgármester kiemelte, hogy ez a rendezvény több, mint egy nagy sportverseny a város számára: "A kilencpines bowling hagyományosan népszerű sport Székesfehérváron. Bízunk benne, hogy ez a világméretű esemény maradandó élményt nyújt a sportolóknak és a nézőknek egyaránt."</p>
+            <p>A világbajnokságot az teszi különlegessé, hogy nemcsak a felnőtt csapat világbajnokságokat, hanem az U15-ös és U19-es korosztály jelentős versenyeit is magában foglalja ezek mellet az ELSŐ U15 világbajnokságot is. A május 22. és június 7. között megrendezett tornán a világ legjobb kilenctűs tekézői érkeznek Székesfehérvárra.</p>
+        </article>
+        <article id="playersu15-u19">
+
+            <dialog id="close-dialog" class="w-4/5 max-w-[600px] p-2 border rounded shadow self-center-safe justify-self-center-safe bg-green-100">
+                <p class="text-center text-[1.4rem]">Nem jó, az U15-nél csak 2 válogatott, míg az U19-nél csak 6 válogatott lehet! A jelenlegi keret:</p>
+                    <ul id="error-list">
+                        
+                    </ul>
+
+                    <div class="text-center">
+                        <button type="button" id="close-button" 
+                    class="h-[3.6rem] w-[7.4rem] text-[1.4rem] bg-gray-600 text-white cursor-pointer p-2 rounded hover:scale-105 transition-all">Mégse</button>
+                    </div>
+                
+            </dialog>
+
+            <dialog id="delete-dialog" class="w-4/5 max-w-[600px] p-2 border rounded shadow self-center-safe justify-self-center-safe bg-green-100">
+                <form class="flex flex-col gap-2" id="delete">
+                    <p class="">Biztos szeretnéd törölni az adott játékost?</p>
+
+                    <ul id="delete-item">
+                        
+                    </ul>
+
+                    <button type="submit" id="delete-button"
+                    class="bg-red-600 text-white cursor-pointer p-2 rounded hover:scale-105 transition-all" >Törlés</button>
+                    
+                    <button type="button" id="close-delete" 
+                    class="bg-gray-600 text-white cursor-pointer p-2 rounded hover:scale-105 transition-all">Mégse</button>
+                </form>
+            </dialog>
+
+            <dialog id="update-dialog" class="w-4/5 max-w-[600px] p-2 border rounded shadow self-center-safe justify-self-center-safe bg-green-100">
+                <form class="flex flex-col gap-2" id="update">
+                    <label for="update-name">Név</label>
+                    <input type="text" name="name" id="update-name" class="border border-green-800 rounded" required>
+
+                    <label for="update-team">Csapat</label>
+                    <input type="text" name="team" id="update-team" class="border border-green-800 rounded" required>
+
+                    <label for="update-best">Legjobb eredmény</label>
+                    <input type="number" name="best" id="update-best" class="border border-green-800 rounded" min="0" max="750">
+
+                    <label for="update-gender">Nem</label>
+                    <select name="gender" id="update-gender" class="border border-green-800 rounded" required>
+                        <option value="">Válasszon...</option>
+                        <option value="nő">Nő</option>
+                        <option value="férfi">Férfi</option>
+                    </select>
+
+                    <label for="update-type">Korcsoport</label>
+                    <select name="type" id="update-type" class="border border-green-800 rounded" required>
+                        <option value="">Válasszon...</option>
+                        <option value="u15">U15</option>
+                        <option value="u19">U19</option>
+                    </select>
+
+                    <label for="update-img">Kép forrás:</label>
+                    <input type="text" name="img" id="update-img" class="border border-green-800 rounded">
+
+                    <button type="submit" id="update-button"
+                    class="bg-red-600 text-white cursor-pointer rounded hover:scale-105 transition-all" >Frisítés</button>
+                    
+                    <button type="button" id="close-update" 
+                    class="bg-gray-600 text-white cursor-pointer rounded hover:scale-105 transition-all">Mégse</button>
+                </form>
+            </dialog>
+
+            <h2>Válogatott keret</h2>
+            <div id="cards">
+                
+            </div>
+        </article>
+    </main>
+
+    <footer>
+        <p>Készítette: Bor Bence</p>
+    </footer>
+
+</body>
+
+</html>
